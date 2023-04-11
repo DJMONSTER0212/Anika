@@ -7,6 +7,7 @@ import TopNav from './components/TopNav';
 
 import './light.css'
 
+import RegisterComplaint from './pages/RegisterComplaint'
 function App() {
   return (
     <div className="App">
@@ -14,9 +15,9 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/signin" element={<Signin />} />
-        <Route exact path="/signup" element={<Signup />} />
-        {/* <Route exact path="/complaint" element={<ComplaintForm />} /> */}
-      </Routes>
+        <Route exact path="/signup" element={<Signup/>} />
+        <Route exact path="/complaint" element={<ComplaintForm />} />
+    </Routes>
     </div>
   );
 }
