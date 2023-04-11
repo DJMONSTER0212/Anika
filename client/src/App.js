@@ -3,15 +3,16 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
+import RegisterComplaint from './pages/RegisterComplaint'
 function App() {
   return (
     <div className="App">
-    <h1>Hello</h1>
+    
     <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/signin" element={<Signin />} />
         <Route exact path="/signup" element={<Signup/>} />
-        {/* <Route exact path="/complaint" element={<ComplaintForm />} /> */}
+        <Route exact path="/register_complaint" element={<RegisterComplaint />} />
     </Routes>
     </div>
   );
