@@ -1,9 +1,48 @@
-import { Form, Input, Button, Checkbox, Col, Row } from "antd";
+import { Form, Input, Button, Checkbox, Col, Row, Radio } from "antd";
 import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { useState,useContext } from "react";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { AuthContext } from "../context/auth";
 
 
 function Signup() {
+
+  // context
+  const [auth, setAuth] = useContext(AuthContext);
+  // state
+  const [loading, setLoading] = useState(false);
+  // hooks
+  const navigate = useNavigate();
+
+
+  const onFinish = async (values) => {
+    // console.log("values => ", values);
+    setLoading(true);
+    try {
+      const { data } = await axios.post(`/signup`, values);
+      if (data?.error) {
+        toast.error(data.error);
+        setLoading(false);
+      } else {
+        console.log("signup response => ", data);
+        // save in context
+        setAuth(data);
+        // save in local storage
+        localStorage.setItem("auth", JSON.stringify(data));
+        toast.success("Successfully signed up");
+        setLoading(false);
+        // redirect
+        navigate('/home')
+      }
+    } catch (err) {
+      toast.error("Signup failed. Try again.");
+      console.log(err);
+      setLoading(false);
+    }
+  };
 
  
   return (
@@ -15,7 +54,7 @@ function Signup() {
           name="normal_login"
           className="login-form"
           initialValues={{ remember: true }}
-          // onFinish={onFinish}
+          onFinish={onFinish}
         >
           {/* name */}
           <Form.Item
@@ -45,6 +84,12 @@ function Signup() {
               placeholder="Password"
             />
           </Form.Item>
+          <Form.Item name="role" label="User">
+          <Radio.Group>
+            <Radio value="Female"> Female </Radio>
+            <Radio value="Organization"> Organization </Radio>
+          </Radio.Group>
+        </Form.Item>
 
           <Form.Item>
             <Button

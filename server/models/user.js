@@ -22,7 +22,7 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
-      default: "Female",
+      // default: "Female",
     },
     image: {
       public_id: "",
