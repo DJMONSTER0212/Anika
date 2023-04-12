@@ -10,7 +10,7 @@ exports.signup = async (req, res) => {
   // console.log("HIT SIGNUP", req.body);
   try {
     // validation
-    const { name, email, password } = req.body;
+    const { name, email, password,role } = req.body;
     if (!name) {
       return res.json({
         error: "Name is required",
@@ -40,6 +40,7 @@ exports.signup = async (req, res) => {
         name,
         email,
         password: hashedPassword,
+        role,
       }).save();
 
       // console.log("user saved in signup", user);
