@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import TopNav from './components/TopNav';
+import ForgotPassword from './pages/ForgotPassword';
 import { Toaster } from "react-hot-toast";
 
 // Context
@@ -24,6 +25,7 @@ function App() {
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/signin" element={<Signin />} />
         <Route exact path="/signup" element={<Signup/>} />
+        <Route exact path="/forgot-password" element={<ForgotPassword/>} />
         <Route exact path="/complaint" element={<RegisterComplaint/>} />
     </Routes>
     </AuthProvider>
