@@ -6,11 +6,11 @@ const RegisterComplaint = () => {
   const [number,setNumber] = useState("");
   const [designation,setDesig] =  useState("");
   const [aadhar,setAadhar] =  useState("");
-  const [org,setOrg] = useState("");
-  const [aorg,setAorg] = useState("");
-  const [aname,setAname] = useState("");
-  const [adesg,setAdesg] = useState("");
-  const [desc,setDes] = useState("");
+  const [organization,setOrg] = useState("");
+  const [accusedOrg,setAorg] = useState("");
+  const [accusedname,setAname] = useState("");
+  const [accusedDept,setAdesg] = useState("");
+  const [briefDec,setDes] = useState("");
   const handleSubmit = async(event)=>{
     event.preventDefault();
     try {
@@ -19,7 +19,7 @@ const RegisterComplaint = () => {
           "Content-type": "application/json",
         },
       };
-      const { data } = await axios.post("/complaint_register",{name,number,designation,aadhar,org,aorg,aname,adesg,desc},config);
+      const { data } = await axios.post("/complaint_register",{name,number,designation,aadhar,organization,accusedOrg,accusedname,accusedDept,briefDec},config);
       console.log(JSON.stringify(data));
       
     } catch (error) {

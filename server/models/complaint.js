@@ -9,14 +9,12 @@ const complaintSchema = new Schema({
     },
     number:{
         type:String,
-        unique:true,
         required:true,
     },
     email:{
         type: String,
         trim: true,
         required: true,
-        unique: true,
     },
     designation:{
         type:String,
@@ -25,7 +23,6 @@ const complaintSchema = new Schema({
     aadhar:{
         type:Number,
         required:true,
-        unique:true,
     },
     organization:{
         type:String,
@@ -37,6 +34,10 @@ const complaintSchema = new Schema({
         required:true
     },
     accusedDept:{
+        type:String,
+        required:true
+    },
+    accusedOrg:{
         type:String,
         required:true
     },
