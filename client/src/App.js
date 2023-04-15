@@ -15,6 +15,7 @@ import { AuthProvider } from "../src/context/auth";
 import './light.css'
 
 import RegisterComplaint from './pages/RegisterComplaint'
+import Ai_chat from './pages/Ai_chat';
 function App() {
   return (
     <AuthProvider>
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/signup" element={<Signup/>} />
         <Route exact path="/forgot-password" element={<ForgotPassword/>} />
         <Route exact path="/complaint" element={<RegisterComplaint/>} />
+        <Route exact path="/aichat" element={<Ai_chat/>} />
     </Routes>
     </AuthProvider>
   );
