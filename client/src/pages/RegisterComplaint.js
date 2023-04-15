@@ -1,113 +1,87 @@
-import React, { useState } from 'react'
-import axios from "axios";
+import { Button, Form, Input } from 'antd';
+import React, { useState,useContext } from 'react';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+
 
 const RegisterComplaint = () => {
-  const [name,setName] = useState("");
-  const [number,setNumber] = useState("");
-  const [designation,setDesig] =  useState("");
-  const [aadhar,setAadhar] =  useState("");
-  const [organization,setOrg] = useState("");
-  const [accusedOrg,setAorg] = useState("");
-  const [accusedname,setAname] = useState("");
-  const [accusedDept,setAdesg] = useState("");
-  const [briefDec,setDes] = useState("");
-  const handleSubmit = async(event)=>{
-    event.preventDefault();
+  const [form] = Form.useForm();
+  const [formLayout, setFormLayout] = useState('vertical');
+  
+  const userAuth = JSON.parse(localStorage.getItem('auth'));
+  const email = userAuth.user.email;
+  // state
+  const [loading, setLoading] = useState(false);
+  // hooks
+  const navigate = useNavigate();
+
+  const onFinish = async (values) => {
+    // console.log("values => ", values);
+    // return;
+    const { data } = await axios.post("/complaint_register", values);
+      console.log("Complaint response => ", data);
     try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-      const { data } = await axios.post("/complaint_register",{name,number,designation,aadhar,organization,accusedOrg,accusedname,accusedDept,briefDec},config);
-      console.log(JSON.stringify(data));
-      
-    } catch (error) {
-      console.log("Some error Occured"); 
+      if (data?.error) {
+        toast.error(data.error);
+        setLoading(false);
+      } else {
+      setLoading(true);
+      toast.success("Complaint Registered Successfully!")
+      navigate('/home')
+      }
+    }catch (err) {
+      console.log("err => ", err);
+      setLoading(false);
+      toast.error("Complaint Registration Failed. Try again.");
     }
   }
+  
   return (
-    <>
-    <div className='container'>
-      <form method='post' >
-      <div className="row my-2">
-        <div className='col-sm-2'>
-          <label htmlFor="complainantName" className="form-label ">Name of the Complainant* </label>
-        </div>
-        <div className='col-sm-9'>
-          <input type="text" name='compalinantName' onChange={(event)=>{setName(event.target.value);}} className="form-control " id="complainantName" aria-describedby="emailHelp" required/>
-        </div>
-      </div>
-      <div className="row my-2">
-        <div className='col-sm-2'>
-          <label htmlFor="cnumber" className="form-label ">Contact No.* </label>
-        </div>
-        <div className='col-sm-9'>
-              <input type="text" name='cnumber' onChange={(event) => { setNumber(event.target.value);}} className="form-control " id="cnumber" aria-describedby="emailHelp" required/>
-        </div>
-      </div>
-      <div className="row my-2">
-        <div className='col-sm-2'>
-          <label htmlFor="designation" className="form-label">Designation </label>
-        </div>
-        <div className='col-sm-9'>
-          <input type="text" className="form-control " onChange={(event)=>setDesig(event.target.value)} name='designation' id="designation" aria-describedby="emailHelp" />
-        </div>
-      </div>
-      <div className="row my-2">
-        <div className='col-sm-2'>
-          <label htmlFor="aadhar_box" className="form-label ">Aadhar Number* </label>
-        </div>
-        <div className='col-sm-9'>
-          <input type="text" onChange={(event)=>setAadhar(event.target.value)} className="form-control " name='aadhar' id="aadhar_box" aria-describedby="emailHelp" required />
-        </div>
-      </div>
-        <div className="row my-2">
-          <div className='col-sm-2'>
-            <label htmlFor="uorganization" className="form-label ">Organization</label>
-          </div>
-          <div className='col-sm-9'>
-            <input type="text" className="form-control " onChange={(event)=>setOrg(event.target.value)} name='uorganization' id="uorganization" aria-describedby="emailHelp" />
-          </div>
-        </div>
-        <div className="row my-2">
-          <div className='col-sm-2'>
-            <label htmlFor="accusedname" className="form-label ">Name&#40;s&#41; of Accused*</label>
-          </div>
-          <div className='col-sm-9'>
-            <input type="text" className="form-control " onChange={(event)=>setAname(event.target.value)} name='accusedname' id="accusedname" aria-describedby="emailHelp" required />
-          </div>
-        </div>
-        <div className="row my-2">
-          <div className='col-sm-2'>
-            <label htmlFor="accusedDept" className="form-label ">Department and Designation of Accused/Respondent*</label>
-          </div>
-          <div className='col-sm-9'>
-            <input type="text" className="form-control " onChange={(event)=>setAdesg(event.target.value)} name='accusedDept' id="accusedDept" aria-describedby="emailHelp" required />
-          </div>
-        </div>
-        <div className="row my-2">
-          <div className='col-sm-2'>
-            <label htmlFor="accusedOrg" className="form-label ">Organization of the Accused*</label>
-          </div>
-          <div className='col-sm-9'>
-            <input type="text" className="form-control " name='accusedOrg' onChange={(event)=>setAorg(event.target.value)} id="accusedOrg" aria-describedby="emailHelp" required />
-          </div>
-        </div>
-        <div className="row my-2">
-          <div className='col-sm-2'>
-            <label htmlFor="description" className="form-label ">Brief Description of incident*</label>
-          </div>
-          <div className='col-sm-9'>
-              <input type="text" className="form-control " onChange={(event) => setDes(event.target.value)} name='description' id="description" aria-describedby="emailHelp" required />
-          </div>
-        </div>
-        
-      <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
-      </form>
-    </div>
-    </>
-  )
-}
+    <div className='container pt-4'>
+      <h1>Complaint Form</h1>
+        <Form
+      layout={formLayout}
+      form={form}
+      onFinish={onFinish}
+    >
+      <Form.Item label="Email Address" name="email" rules={[{ required: true}]}>
+        <Input defaultValue={email}/>
+      </Form.Item>
+      <Form.Item label="Title" name="name" rules={[{ required: true, message: 'Enter Title of the Complaint!' }]}>
+        <Input placeholder="Title of Complaint" />
+      </Form.Item>
+      <Form.Item label="Contact Number" name="number" rules={[{ required: true, message: 'Enter Your Mobile Number Correctly!' }]}>
+        <Input placeholder="10 Digit Mobile Number" />
+      </Form.Item>
+      <Form.Item label="Your Designation" name="designation">
+        <Input placeholder="e.g. Assistant executive" />
+      </Form.Item>
+      <Form.Item label="Aadhar Number" name="aadhar" rules={[{ required: true, message: 'Enter 12 Digit Aadhar Number!' }]}>
+        <Input placeholder="" />
+      </Form.Item>
+      <Form.Item label="Your Organization" name="organization" rules={[{ required: true, message: 'Enter your Organization name!' }]}>
+        <Input placeholder="" />
+      </Form.Item>
+      <Form.Item label="Name(s) of Accused" name="accusedname" rules={[{ required: true, message: 'Enter Title of the Complaint!' }]}>
+        <Input placeholder="" />
+      </Form.Item>
+      <Form.Item label="Department and Designation of Accused/Respondent" name="accusedDept" rules={[{ required: true, message: 'Enter Accused Employee Details!' }]}>
+        <Input placeholder="" />
+      </Form.Item>
+      <Form.Item label="Organization of Accused" name="accusedOrg" rules={[{ required: true }]}>
+        <Input placeholder="" />
+      </Form.Item><Form.Item label="Brief Description of incident" name="briefDec" rules={[{ required: true, message: 'Write anything what you felt was not good!' }]}>
+        <Input placeholder="" />
+      </Form.Item>
 
-export default RegisterComplaint
+      <Form.Item >
+        <Button loading={loading} htmlType="submit" type="primary">Submit</Button>
+      </Form.Item>
+    </Form>
+    </div>
+    
+  );
+};
+export default RegisterComplaint;
