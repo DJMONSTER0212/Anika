@@ -8,7 +8,7 @@ const Ai_chat = () => {
     // let openai=null;
     // let resp = [];
     const [resp,setResp] = useState([]);;
-    let i=0;
+    // let i=0;
 
     useEffect(() => {
         // const config = new Configuration({
@@ -21,7 +21,7 @@ const Ai_chat = () => {
     // event.preventDefault(); 
     const addresp = async()=>{
         // resp.concat({user:"hi",bot:"hello"});
-        setResp(resp.concat({user:"hi",bot:"hello"}))
+        setResp(resp.concat({user:"hi",bot:"I am Anika the Bot and I have hear to help you"}))
     }
     const [prompt, setPrompt] = useState("");
     const handleSubmit = async (event) => {
@@ -68,7 +68,6 @@ const Ai_chat = () => {
                     <div className="mb-3" >
                         <label htmlFor="exampleInputEmail1" className="form-label">chat</label>
                         <input type="text" onChange={(event) => setPrompt(event.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                        <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                     </div>
 
                     <button type="submit" onClick={handleSubmit} className="btn btn-primary">Submit</button>
