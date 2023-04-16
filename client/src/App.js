@@ -16,6 +16,7 @@ import './light.css'
 
 import RegisterComplaint from './pages/RegisterComplaint'
 import Ai_chat from './pages/Ai_chat';
+import Sos from './components/Sos';
 function App() {
   return (
     <AuthProvider>
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/forgot-password" element={<ForgotPassword/>} />
         <Route exact path="/complaint" element={<RegisterComplaint/>} />
         <Route exact path="/aichat" element={<Ai_chat/>} />
+        <Route exact path="/sos" element={<Sos/>} />
     </Routes>
     </AuthProvider>
   );

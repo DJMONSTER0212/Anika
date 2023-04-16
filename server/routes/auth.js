@@ -1,6 +1,7 @@
 
 import express from "express";
 import { aichat } from "../controllers/aichat";
+import { sosgen } from "../controllers/sosgen";
 
 const router = express.Router();
 
@@ -23,5 +24,5 @@ router.post("/complaint_register",register);
 router.post("/forgot-password", forgotPassword);
 router.post("/reset-password", resetPassword);
 router.post("/aichat", aichat);
-
+router.post("/emergency",sosgen);
 export default router;

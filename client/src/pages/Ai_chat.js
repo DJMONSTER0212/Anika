@@ -52,7 +52,7 @@ const Ai_chat = () => {
     }
     return (
         <>
-            <div className="container">
+            <div className="container" style={{position:'relative',left:"-50px"}}>
                 {
                     resp.map((element) => {
                         return <div>
@@ -66,8 +66,8 @@ const Ai_chat = () => {
             <div className='container position-absolute bottom-0' >
                 <form>
                     <div className="mb-3" >
-                        <label htmlFor="exampleInputEmail1" className="form-label">chat</label>
-                        <input type="text" onChange={(event) => setPrompt(event.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        <label htmlFor="exampleInputEmail1" className="form-label">Enter You question here</label>
+                        <input type="text" placeholder='Enter Question' onChange={(event) => setPrompt(event.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                     </div>
 
                     <button type="submit" onClick={handleSubmit} className="btn btn-primary">Submit</button>

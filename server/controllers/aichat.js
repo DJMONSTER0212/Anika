@@ -1,11 +1,12 @@
 // const app = express()
 const { Configuration, OpenAIApi } = require('openai')
 const config = new Configuration({
-    apiKey: "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"
+    apiKey: "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"
 });
 const openai = new OpenAIApi(config);
 
 exports.aichat = async(req,res)=>{
+    console.log(process.env.OPEN_AI)
     console.log(req.body)
     const { prompt } = req.body;
     const response = await openai.createCompletion({
