@@ -6,11 +6,11 @@ const ComplaintTrack = () => {
     const userAuth = JSON.parse(localStorage.getItem('auth'));
     const email = userAuth.user.email;
     const getprogress = async()=>{
-        const { data } = axios.get('/complaintstatus',{email});
+        const { data } = axios.get('/progress',{email:email});
     }
     useEffect(() => {
-        
-    });
+        getprogress();
+    },[]);
   return (
     <>
     <div className='container'>
