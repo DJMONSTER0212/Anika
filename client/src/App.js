@@ -17,6 +17,7 @@ import './light.css'
 import RegisterComplaint from './pages/RegisterComplaint'
 import Ai_chat from './pages/Ai_chat';
 import Sos from './components/Sos';
+import ChatSupport from './pages/ChatSupport';
 import ComplaintTrack from './pages/ComplaintTrack';
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
         <Route exact path="/complaint" element={<RegisterComplaint/>} />
         <Route exact path="/aichat" element={<Ai_chat/>} />
         <Route exact path="/sos" element={<Sos/>} />
+        <Route exact path="/chat-support" element={<ChatSupport/>} />
+        
         <Route exact path="/complaint_track" element={<ComplaintTrack/>} />
     </Routes>
     </AuthProvider>
