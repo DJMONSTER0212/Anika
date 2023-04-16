@@ -5,11 +5,11 @@ const ChatSupport = () => {
   return (
     <>
     <div>ChatSupport</div>
-            <div className="App">
+            {/* <div className="App"> */}
             <TawkMessengerReact
                 propertyId="643b9ef431ebfa0fe7f88fa7"
                 widgetId="1gu4gekjv"/>
-        </div>
+        {/* </div> */}
     </>
     
   )

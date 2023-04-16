@@ -25,4 +25,5 @@ router.post("/forgot-password", forgotPassword);
 router.post("/reset-password", resetPassword);
 router.post("/aichat", aichat);
 router.post("/emergency",sosgen);
+
 export default router;
