@@ -10,14 +10,15 @@ import { Toaster } from "react-hot-toast";
 // Context
 import { AuthProvider } from "../src/context/auth";
 
-
-
 import './light.css'
 
 import RegisterComplaint from './pages/RegisterComplaint'
 import Ai_chat from './pages/Ai_chat';
 import Sos from './components/Sos';
 import ChatSupport from './pages/ChatSupport';
+import Admin from './pages/Admin';
+import PendingComplaints from './pages/PendingComplaints';
+import Complaints from './pages/Complaints';
 import ComplaintTrack from './pages/ComplaintTrack';
 import UserDash from './pages/UserDash';
 function App() {
@@ -35,6 +36,10 @@ function App() {
         <Route exact path="/aichat" element={<Ai_chat/>} />
         <Route exact path="/sos" element={<Sos/>} />
         <Route exact path="/chat-support" element={<ChatSupport/>} />
+        <Route exact path="/admin" element={<Admin/>} />
+        <Route exact path="/admin/complaints/pending" element={<PendingComplaints/>} />
+        <Route exact path="/admin/complaints" element={<Complaints/>} />
+
         
         <Route exact path="/complaint_track" element={<ComplaintTrack/>} />
     </Routes>
