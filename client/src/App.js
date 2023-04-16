@@ -17,6 +17,7 @@ import './light.css'
 import RegisterComplaint from './pages/RegisterComplaint'
 import Ai_chat from './pages/Ai_chat';
 import Sos from './components/Sos';
+import ChatSupport from './pages/ChatSupport';
 function App() {
   return (
     <AuthProvider>
@@ -31,6 +32,8 @@ function App() {
         <Route exact path="/complaint" element={<RegisterComplaint/>} />
         <Route exact path="/aichat" element={<Ai_chat/>} />
         <Route exact path="/sos" element={<Sos/>} />
+        <Route exact path="/chat-support" element={<ChatSupport/>} />
+        
     </Routes>
     </AuthProvider>
   );
