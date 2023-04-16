@@ -19,6 +19,8 @@ import ChatSupport from './pages/ChatSupport';
 import Admin from './pages/Admin';
 import PendingComplaints from './pages/PendingComplaints';
 import Complaints from './pages/Complaints';
+import ComplaintTrack from './pages/ComplaintTrack';
+import UserDash from './pages/UserDash';
 function App() {
   return (
     <AuthProvider>
@@ -26,7 +28,7 @@ function App() {
       <Toaster />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/home" element={<UserDash />} />
         <Route exact path="/signin" element={<Signin />} />
         <Route exact path="/signup" element={<Signup/>} />
         <Route exact path="/forgot-password" element={<ForgotPassword/>} />
@@ -38,6 +40,8 @@ function App() {
         <Route exact path="/admin/complaints/pending" element={<PendingComplaints/>} />
         <Route exact path="/admin/complaints" element={<Complaints/>} />
 
+        
+        <Route exact path="/complaint_track" element={<ComplaintTrack/>} />
     </Routes>
     </AuthProvider>
   );
