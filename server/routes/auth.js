@@ -2,7 +2,7 @@
 import express from "express";
 import { aichat } from "../controllers/aichat";
 import { sosgen } from "../controllers/sosgen";
-
+// import { comptStatus } from "../controllers/comptStatus"
 const router = express.Router();
 
 // controllers
@@ -25,4 +25,5 @@ router.post("/forgot-password", forgotPassword);
 router.post("/reset-password", resetPassword);
 router.post("/aichat", aichat);
 router.post("/emergency",sosgen);
+// router.get("/complaintstatus",comptStatus);
 export default router;

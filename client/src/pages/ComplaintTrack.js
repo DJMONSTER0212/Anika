@@ -1,9 +1,16 @@
-import React, { useState } from 'react'
-
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
 const ComplaintTrack = () => {
     const [progress,setProgress] = useState("2%");
     const [desc,setDesc] = useState("Description");
-    
+    const userAuth = JSON.parse(localStorage.getItem('auth'));
+    const email = userAuth.user.email;
+    const getprogress = async()=>{
+        const { data } = axios.get('/complaintstatus',{email});
+    }
+    useEffect(() => {
+        
+    });
   return (
     <>
     <div className='container'>

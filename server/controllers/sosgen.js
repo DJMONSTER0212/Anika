@@ -2,7 +2,7 @@ const { Navigator } = require("node-navigator");
 const navigator = new Navigator();
 
 const accountSid = "AC440de591d161d1300a08bdeadc9d7fc9";
-const authToken = "230dc8ab0af7a2b15a281914ecd32778";
+const authToken = "03efc9b67f3032c0da96bc6fa310ec0b";
 const client = require("twilio")(accountSid, authToken);
 // var pos = null;
 const successCallback = async(position) => {

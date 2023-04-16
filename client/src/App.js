@@ -19,6 +19,7 @@ import Ai_chat from './pages/Ai_chat';
 import Sos from './components/Sos';
 import ChatSupport from './pages/ChatSupport';
 import ComplaintTrack from './pages/ComplaintTrack';
+import UserDash from './pages/UserDash';
 function App() {
   return (
     <AuthProvider>
@@ -26,7 +27,7 @@ function App() {
       <Toaster />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/home" element={<UserDash />} />
         <Route exact path="/signin" element={<Signin />} />
         <Route exact path="/signup" element={<Signup/>} />
         <Route exact path="/forgot-password" element={<ForgotPassword/>} />
