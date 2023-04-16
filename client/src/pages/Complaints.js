@@ -49,6 +49,7 @@ const Complaints = () => {
               {/* <p>{item.name}</p>  */}
             </List.Item>
         ))}
+        
     />
     </Col>
     </div>
