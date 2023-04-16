@@ -7,8 +7,8 @@ const Sos = () => {
         const {data} = axios.post('/emergency',{})
     }
   return (
-    <div>
-          <button type="submit" onClick={handleClick} className="btn btn-danger">Emergency SOS</button>
+    <div className='container d-flex justify-content-center ' style={{position:'absolute',top:"300px"}}>
+          <button type="submit" onClick={handleClick} className="btn btn-danger btn-lg">Emergency SOS</button>
     </div>
   )
 }

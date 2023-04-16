@@ -5,6 +5,7 @@ const ChatSupport = () => {
   return (
     <>
     <div>ChatSupport</div>
+      <b>>>Click on Icon at bottom Right Corner</b>
             {/* <div className="App"> */}
             {/* <div className="container"> */}
             <TawkMessengerReact
